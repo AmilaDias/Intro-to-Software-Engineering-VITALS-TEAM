@@ -7,9 +7,13 @@ using namespace std;
 
 int main() {
 
+	/*Global Variables*/
 	string irregularData [5][5];
 
+
 	/*Random number generator*/
+
+
 
 	/*Number testing*/
 
