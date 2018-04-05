@@ -33,6 +33,5 @@ int main() {
 
 	/*Send off if*/
 
-		system("pause");
 	return 0;
 }
