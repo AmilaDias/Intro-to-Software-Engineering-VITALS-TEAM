@@ -10,7 +10,17 @@
 
 using namespace std;
 int id = 1;
-string irregular[5][2];
+
+//Initialize array
+string irregular[5][2] = {
+	{ "Diastolic Blood Pressure" , "0"},
+	{ "Systolic Blood Pressure" , "0" },
+	{ "Heart Rate" , "0" },
+	{ "Temperature" , "0" },
+	{ "Oxygen Saturation" , "0" },
+};
+
+
 void getVitals(user &user1) {
 	dataGen *dataGenerator = new dataGen();
 	int dp = 0;
@@ -166,40 +176,28 @@ int main()
 {
 	//initialize random seed
 	srand(time(NULL));
-
-	for (int i = 0; i < 5; i++) {
-		if (i == 0) {
-			irregular[i][0] = "Diastolic";
-		}
-		if (i == 1) {
-			irregular[i][0] = "Systolic";
-		}
-		if (i == 2) {
-			irregular[i][0] = "Heart Rate";
-		}
-		if (i == 3) {
-			irregular[i][0] = "Temperature";
-		}
-		if (i == 4) {
-			irregular[i][0] = "Oxygen Level";
-		}
-	}
 	
+	//Initialize User Object
 	user user1 = user();
+
+	//Randomly generate User Vitals
 	getVitals(user1);
 
+	//Analyze vital signals
 	isNormalBp(user1.getDiastolicBp(), user1.getSystolicBp());
 	isNormalHeartRate(user1.getHeartRate());
 	isNormalTemp(user1.getSkinTemperature());
 	isNormalOxygenLevel(user1.getOxygenSaturation());
 
+	//Output user vitals to console **FOR TESTING**
 	printf("Diastolic Blood Pressure: %d\n", user1.getDiastolicBp());
 	printf("Systolic Blood Pressure: %d\n", user1.getSystolicBp());
 	printf("Heart Rate: %d\n", user1.getHeartRate());
 	printf("Temperature: %.2f\n", user1.getSkinTemperature());
-	printf("Oxygen Level: %.2f\n", user1.getOxygenSaturation());
+	printf("Oxygen Saturation: %.2f\n", user1.getOxygenSaturation());
 	printf("\n");
 
+	//Output vitals analysis to console **FOR TESTING**
 	for (int i = 0; i < 5; i++) {
 		cout << irregular[i][0] << ": " << irregular[i][1] << endl;
 	}
