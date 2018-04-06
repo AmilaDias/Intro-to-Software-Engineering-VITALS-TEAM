@@ -7,6 +7,8 @@
 #include <string>
 #include <iostream>
 #include "time.h"
+#include <stdio.h>
+#include <fstream>
 
 using namespace std;
 int id = 1;
@@ -73,42 +75,42 @@ void getUserInput(user &user1) {
 	user1.setOxygenSaturation(oxy);
 }
 
-int isNormalBp(int dbp, int sbp) {
+bool isNormalBp(int dbp, int sbp) {
 	//diastolic and sytolic cases
 	if (60 <= dbp && dbp <= 80 && 90 <= sbp && sbp <= 120) {
 		irregular[0][1] = "Normal";
 		irregular[1][1] = "Normal";
-		return 1;
+		return false;
 	}
 	else if (60 <= dbp && dbp <= 80 && 120 < sbp && sbp < 140) {
 		irregular[0][1] = "Normal";
 		irregular[1][1] = "Pre-High blood pressure";
-		return 0;
+		return true;
 	}
-	else if (60 <= dbp && dbp <= 80 && 140 < sbp && sbp <= 160) {
+	else if (60 <= dbp && dbp <= 80 && 140 < sbp) {
 		irregular[0][1] = "Normal";
 		irregular[1][1] = "High blood pressure";
-		return 0;
+		return true;
 	}
 	else if (60 <= dbp && dbp <= 80 && 70 < sbp && sbp < 90) {
 		irregular[0][1] = "Normal";
 		irregular[1][1] = "Low blood pressure";
-		return 0;
+		return true;
 	}
 	else if (80 < dbp && dbp < 90 && 90 <= sbp && sbp <= 120) {
 		irregular[0][1] = "Pre-High blood pressure";
 		irregular[1][1] = "Normal";
-		return 0;
+		return true;
 	}
-	else if (90 < dbp && dbp <= 100 && 90 <= sbp && sbp <= 120) {
+	else if (90 < dbp  && 90 <= sbp && sbp <= 120) {
 		irregular[0][1] = "High blood pressure";
 		irregular[1][1] = "Normal";
-		return 0;
+		return true;
 	}
 	else if (40 < dbp && dbp < 60 && 90 <= sbp && sbp <= 120) {
 		irregular[0][1] = "Low blood pressure";
 		irregular[1][1] = "Normal";
-		return 0;
+		return true;
 	}
 	else if (80 < dbp && dbp < 90 && 120 < sbp && sbp < 140) {
 		for (int i = 0; i < 5; i++) {
@@ -120,9 +122,9 @@ int isNormalBp(int dbp, int sbp) {
 				break;
 			}
 		}
-		return 0;
+		return true;
 	}
-	else if (90 < dbp && dbp <= 100 && 140 < sbp && sbp <= 160) {
+	else if (90 < dbp  && 140 < sbp ) {
 		for (int i = 0; i < 5; i++) {
 			if (i == 0) {
 				irregular[i][1] = "High blood pressure";
@@ -132,9 +134,9 @@ int isNormalBp(int dbp, int sbp) {
 				break;
 			}
 		}
-		return 0;
+		return true;
 	}
-	else if (40 < dbp && dbp < 60 && 70 < sbp && sbp < 90) {
+	else if ( dbp < 60 && sbp < 90) {
 		for (int i = 0; i < 5; i++) {
 			if (i == 0) {
 				irregular[i][1] = "Low blood pressure";
@@ -144,59 +146,58 @@ int isNormalBp(int dbp, int sbp) {
 				break;
 			}
 		}
-		return 0;
+		return true;
 	}
 	else {
 		cout << "Invalid readings" << endl;
 		irregular[0][1] = "Invalid Reading";
 		irregular[1][1] = "Invalid Reading";
 	}
-
-	return 0;
+	return true;
 }
 
-int isNormalHeartRate(int hr) {
+bool isNormalHeartRate(int hr) {
 	if (60 <= hr && hr <= 100) {
 		irregular[2][1] = "Normal";
-		return 1;
+		return false;
 	}
 	else if (hr > 100) {
 		irregular[2][1] = "High";
-		return 0;
+		return true;
 	}
 	else if (hr < 60) {
 		irregular[2][1] = "Low";
-		return 0;
+		return true;
 	}
 }
 
-int isNormalTemp(double temp) {
+bool isNormalTemp(double temp) {
 	if (98 <= temp && temp <= 99) {
 		irregular[3][1] = "Normal";
-		return 1;
+		return false;
 	}
 	else if (temp > 99) {
 		irregular[3][1] = "High";
-		return 0;
+		return true;
 	}
 	else if (temp < 98) {
 		irregular[3][1] = "Low";
-		return 0;
+		return true;
 	}
 }
 
-int isNormalOxygenLevel(double oxy) {
+bool isNormalOxygenLevel(double oxy) {
 	if (0.95 <= oxy && oxy <= 1.00) {
 		irregular[4][1] = "Normal";
-		return 1;
+		return false;
 	}
 	else if (oxy > 1.00) {
-		irregular[5][1] = "High";
-		return 0;
+		irregular[4][1] = "High";
+		return true;
 	}
 	else if (oxy < .95) {
 		irregular[4][1] = "Low";
-		return 0;
+		return true;
 	}
 }
 
@@ -235,6 +236,30 @@ int main()
 		cout << irregular[i][0] << ": " << irregular[i][1] << endl;
 	}
 	
+	//File Output
+	FILE * outputFile;
+	int n;
+	char name[100];
+
+	outputFile = fopen("vitalsOutput.txt", "w");
+
+	if (isNormalBp(user1.getDiastolicBp(), user1.getSystolicBp())) {
+		fprintf(outputFile, "Diastolic Blood Pressure: %s \n", irregular[0][1].c_str());
+		fprintf(outputFile, "Systolic Blood Pressure: %s \n", irregular[1][1].c_str());
+	}
+	if (isNormalHeartRate(user1.getHeartRate())) {
+		fprintf(outputFile, "Heart Rate: %s \n", irregular[2][1].c_str());
+	}
+	if (isNormalTemp(user1.getSkinTemperature())) {
+		fprintf(outputFile, "Skin Temperature: %s \n", irregular[3][1].c_str());
+	}
+	if (isNormalOxygenLevel(user1.getOxygenSaturation())) {
+		fprintf(outputFile, "Skin Temperature: %s \n", irregular[4][1].c_str());
+	}
+
+	fclose(outputFile);
+
+
 	system("pause");
     return 0;
 }
