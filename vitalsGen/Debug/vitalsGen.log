@@ -1,55 +1,25 @@
 ﻿  vitalsGen.cpp
 c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(18): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(20): error C3861: 'getVitals': identifier not found
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(21): error C3867: 'user::getDiastolicBp': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(21): error C3867: 'user::getSystolicBp': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(21): error C3861: 'isNormalBp': identifier not found
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(22): error C3867: 'user::getHeartRate': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(22): error C3861: 'isNormalHeartRate': identifier not found
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(23): error C3867: 'user::getSkinTemperature': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(23): error C3861: 'isNormalTemp': identifier not found
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(24): error C3867: 'user::getOxygenSaturation': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(24): error C3861: 'isNormalOxygenLevel': identifier not found
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(26): error C3867: 'user::getDiastolicBp': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(26): error C2297: '+': illegal, right operand has type 'int (__thiscall user::* )(void)'
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(27): error C3867: 'user::getSystolicBp': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(27): error C2297: '+': illegal, right operand has type 'int (__thiscall user::* )(void)'
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(28): error C3867: 'user::getHeartRate': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(28): error C2297: '+': illegal, right operand has type 'int (__thiscall user::* )(void)'
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(29): error C3867: 'user::getSkinTemperature': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(29): error C2297: '+': illegal, right operand has type 'double (__thiscall user::* )(void)'
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(30): error C3867: 'user::getOxygenSaturation': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(30): error C2297: '+': illegal, right operand has type 'double (__thiscall user::* )(void)'
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(49): error C3867: 'dataGen::generateDiastolicBP': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(49): error C2440: '=': cannot convert from 'int (__thiscall dataGen::* )(void)' to 'int'
-  c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(49): note: There is no context in which this conversion is possible
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(50): error C3867: 'dataGen::generateSystolicBP': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(50): error C2440: '=': cannot convert from 'int (__thiscall dataGen::* )(void)' to 'int'
-  c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(50): note: There is no context in which this conversion is possible
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(51): error C3867: 'dataGen::generateHeartRate': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(51): error C2440: '=': cannot convert from 'int (__thiscall dataGen::* )(void)' to 'int'
-  c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(51): note: There is no context in which this conversion is possible
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(52): error C3867: 'dataGen::generateSkinTemp': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(52): error C2440: '=': cannot convert from 'double (__thiscall dataGen::* )(void)' to 'double'
-  c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(52): note: There is no context in which this conversion is possible
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(53): error C3867: 'dataGen::generateOxySat': non-standard syntax; use '&' to create a pointer to member
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(53): error C2440: '=': cannot convert from 'double (__thiscall dataGen::* )(void)' to 'double'
-  c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(53): note: There is no context in which this conversion is possible
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(63): warning C4804: '<=': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(66): warning C4804: '<=': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(66): warning C4804: '<': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(70): warning C4804: '<=': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(74): warning C4804: '<=': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(74): warning C4804: '<': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(78): warning C4804: '<': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(78): warning C4804: '<=': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(82): warning C4804: '<=': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(86): warning C4804: '<': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(86): warning C4804: '<=': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(90): warning C4804: '<': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(102): warning C4804: '<=': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(114): warning C4804: '<': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(134): warning C4804: '<=': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(148): warning C4804: '<=': unsafe use of type 'bool' in operation
-c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(162): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(41): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(44): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(44): warning C4804: '<': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(48): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(52): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(52): warning C4804: '<': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(56): warning C4804: '<': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(56): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(60): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(64): warning C4804: '<': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(64): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(68): warning C4804: '<': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(80): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(92): warning C4804: '<': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(112): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(126): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(140): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(156): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(137): warning C4715: 'isNormalTemp': not all control paths return a value
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(123): warning C4715: 'isNormalHeartRate': not all control paths return a value
+c:\users\wintersxpast\desktop\vitalsgen\vitalsgen\vitalsgen.cpp(151): warning C4715: 'isNormalOxygenLevel': not all control paths return a value
+  vitalsGen.vcxproj -> C:\Users\wintersxpast\Desktop\vitalsGen\Debug\vitalsGen.exe
+  vitalsGen.vcxproj -> C:\Users\wintersxpast\Desktop\vitalsGen\Debug\vitalsGen.pdb (Partial PDB)

@@ -33,11 +33,14 @@ int dataGen::generateSystolicBP()
 //normal range is 98-99
 double dataGen::generateSkinTemp()
 {
-	return (((rand() % 100) + 97) + ((rand() % 100) + 97) / 2);
+	double i = ((double)(rand() % 100)) / 100;
+	int j = (rand() % (100-95) + 95);
+	double x = i + j;
+	return x;
 }
 
 //normal range is 95-100%, using decimal to represent percentage
 double dataGen::generateOxySat()
 {
-	return (((rand() % 105) + 90) + ((rand() % 105) + 90) / 200);
+	return ((((rand() % 105) + 90) + ((rand() % 105) + 90)) / 200);
 }
