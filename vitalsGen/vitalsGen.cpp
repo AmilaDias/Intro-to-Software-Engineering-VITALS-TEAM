@@ -10,52 +10,30 @@
 
 using namespace std;
 int id = 1;
-string irregular[5][1] = {"Diastolic", "Systolic", "Heart Rate", "Temperature", "Oxygen Level"};
+string irregular[5][5] = {"Diastolic", "Systolic", "Heart Rate", "Temperature", "Oxygen Level"};
 
-int main()
-{
-	//initialize random seed
-	srand(time(NULL));
-	
-	user user1 = getVitals();
-	isNormalBp(user1.getDiastolicBp, user1.getSystolicBp);
-	isNormalHeartRate(user1.getHeartRate);
-	isNormalTemp(user1.getSkinTemperature);
-	isNormalOxygenLevel(user1.getOxygenSaturation);
-
-	cout << "Diastolic Blood Pressure: " + user1.getDiastolicBp << endl;
-	cout << "Systolic Blood Pressure: " + user1.getSystolicBp << endl;
-	cout << "Heart Rate: " + user1.getHeartRate << endl;
-	cout << "Temperature: " + user1.getSkinTemperature << endl;
-	cout << "Oxygen Level: " + user1.getOxygenSaturation << endl;
-	printf("\n");
-
-	for (int i = 0; i < 5; i++) {
-		cout << irregular[i][0] << endl;
-	}
-
-	system("pause");
-    return 0;
-}
-
-user getVitals() {
-	dataGen dataGenerator;
+void getVitals(user &user1) {
+	dataGen *dataGenerator = new dataGen();
 	int dp = 0;
 	int sp = 0;
 	int hr = 0;
 	double temp = 0.0;
 	double oxy = 0.0;
 
-	dp = dataGenerator.generateDiastolicBP;
-	sp = dataGenerator.generateSystolicBP;
-	hr = dataGenerator.generateHeartRate;
-	temp = dataGenerator.generateSkinTemp;
-	oxy = dataGenerator.generateOxySat;
+	dp = dataGenerator->generateDiastolicBP();
+	sp = dataGenerator->generateSystolicBP();
+	hr = dataGenerator->generateHeartRate();
+	temp = dataGenerator->generateSkinTemp();
+	oxy = dataGenerator->generateOxySat();
 
-	user user(id, dp, sp, hr, temp, oxy);
+	user1.setUserId(id);
+	user1.setDiastolicBp(dp);
+	user1.setSystolicBp(sp);
+	user1.setHeartRate(hr);
+	user1.setSkinTemperature(temp);
+	user1.setOxygenSaturation(oxy);
 	//increase id for next user
 	id++;
-	return user;
 }
 
 int isNormalBp(int dbp, int sbp) {
@@ -171,3 +149,35 @@ int isNormalOxygenLevel(double oxy) {
 		return 0;
 	}
 }
+
+int main()
+{
+	//initialize random seed
+	srand(time(NULL));
+	
+	user user1 = user();
+	getVitals(user1);
+
+	isNormalBp(user1.getDiastolicBp(), user1.getSystolicBp());
+	isNormalHeartRate(user1.getHeartRate());
+	isNormalTemp(user1.getSkinTemperature());
+	isNormalOxygenLevel(user1.getOxygenSaturation());
+
+	printf("Diastolic Blood Pressure: %d\n", user1.getDiastolicBp());
+	printf("Systolic Blood Pressure: %d\n", user1.getSystolicBp());
+	printf("Heart Rate: %d\n", user1.getHeartRate());
+	printf("Temperature: %.2f\n", user1.getSkinTemperature());
+	printf("Oxygen Level: %.2f\n", user1.getOxygenSaturation());
+	printf("\n");
+	
+	for (int i = 0; i < 5; i++) {
+		cout << irregular[i][0] << endl;
+		for (int j = 0; j < 5; j++) {
+			cout << irregular[i][j] << endl;
+		}
+	}
+	
+	system("pause");
+    return 0;
+}
+
