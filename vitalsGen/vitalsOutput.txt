@@ -1,0 +1,4 @@
+Diastolic Blood Pressure: High blood pressure 
+Systolic Blood Pressure: Normal 
+Heart Rate: High 
+Skin Temperature: High 
