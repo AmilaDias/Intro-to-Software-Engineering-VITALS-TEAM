@@ -20,7 +20,7 @@ string irregular[5][2] = {
 	{ "Oxygen Saturation" , "0" },
 };
 
-
+//Randomly generates User Vitals
 void getVitals(user &user1) {
 	dataGen *dataGenerator = new dataGen();
 	int dp = 0;
@@ -43,6 +43,34 @@ void getVitals(user &user1) {
 	user1.setOxygenSaturation(oxy);
 	//increase id for next user
 	id++;
+}
+
+//Allows user to enter in vital values manually
+void getUserInput(user &user1) {
+	int dp = 0;
+	int sp = 0;
+	int hr = 0;
+	double temp = 0.0;
+	double oxy = 0.0;
+
+	cout << "Set User's Diastolic blood pressure:  ";
+	cin >> dp;
+	cout << "Set User's Systolic blood pressure:  ";
+	cin >> sp;
+	cout << "Set User's Heart Rate:  ";
+	cin >> hr;
+	cout << "Set User's Skin Temperature:  ";
+	cin >> temp;
+	cout << "Set User's Oxygen Saturation:  ";
+	cin >> oxy;
+
+
+	user1.setUserId(id);
+	user1.setDiastolicBp(dp);
+	user1.setSystolicBp(sp);
+	user1.setHeartRate(hr);
+	user1.setSkinTemperature(temp);
+	user1.setOxygenSaturation(oxy);
 }
 
 int isNormalBp(int dbp, int sbp) {
@@ -180,8 +208,13 @@ int main()
 	//Initialize User Object
 	user user1 = user();
 
+	/* **IN PLACE FOR TESTING PURPOSES**
 	//Randomly generate User Vitals
 	getVitals(user1);
+	*/
+	
+	//Get user input for vital signals
+	getUserInput(user1);
 
 	//Analyze vital signals
 	isNormalBp(user1.getDiastolicBp(), user1.getSystolicBp());
