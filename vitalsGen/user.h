@@ -8,7 +8,6 @@ private:
 	int systolicBp;
 	double skinTemperature;
 	double oxygenSaturation;
-	bool warning = false;
 
 public:
 	user();

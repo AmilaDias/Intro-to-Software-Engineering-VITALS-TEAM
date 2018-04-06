@@ -1,8 +1,16 @@
-﻿  vitalsGen.cpp
+﻿  stdafx.cpp
+  vitalsGen.cpp
 c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(168): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(148): warning C4715: 'isNormalTemp': not all control paths return a value
-c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(133): warning C4715: 'isNormalHeartRate': not all control paths return a value
-c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(163): warning C4715: 'isNormalOxygenLevel': not all control paths return a value
+c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(217): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(265): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.14393.0\ucrt\stdio.h(207): note: see declaration of 'fopen'
+c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(263): warning C4101: 'name': unreferenced local variable
+c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(262): warning C4101: 'n': unreferenced local variable
+  user.cpp
+  dataGen.cpp
+  Generating Code...
+c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(182): warning C4715: 'isNormalHeartRate': not all control paths return a value
+c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(197): warning C4715: 'isNormalTemp': not all control paths return a value
+c:\users\wintersxpast\desktop\intro-to-software-engineering-vitals-team\vitalsgen\vitalsgen.cpp(212): warning C4715: 'isNormalOxygenLevel': not all control paths return a value
   vitalsGen.vcxproj -> C:\Users\wintersxpast\Desktop\Intro-to-Software-Engineering-VITALS-TEAM\x64\Debug\vitalsGen.exe
   vitalsGen.vcxproj -> C:\Users\wintersxpast\Desktop\Intro-to-Software-Engineering-VITALS-TEAM\x64\Debug\vitalsGen.pdb (Partial PDB)

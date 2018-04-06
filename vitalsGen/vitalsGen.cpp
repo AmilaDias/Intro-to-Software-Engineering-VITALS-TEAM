@@ -76,42 +76,49 @@ void getUserInput(user &user1) {
 }
 
 bool isNormalBp(int dbp, int sbp) {
-	//diastolic and sytolic cases
+	//if both diastolic and systolic vitals are normal
 	if (60 <= dbp && dbp <= 80 && 90 <= sbp && sbp <= 120) {
 		irregular[0][1] = "Normal";
 		irregular[1][1] = "Normal";
 		return false;
 	}
+	//if diastolic is normal and systolic is getting high, but not quite considered high blood pressure
 	else if (60 <= dbp && dbp <= 80 && 120 < sbp && sbp < 140) {
 		irregular[0][1] = "Normal";
 		irregular[1][1] = "Pre-High blood pressure";
 		return true;
 	}
+	//if diastolic is normal and systolic is high
 	else if (60 <= dbp && dbp <= 80 && 140 < sbp) {
 		irregular[0][1] = "Normal";
 		irregular[1][1] = "High blood pressure";
 		return true;
 	}
+	//if diastolic is normal and systolic is low
 	else if (60 <= dbp && dbp <= 80 && 70 < sbp && sbp < 90) {
 		irregular[0][1] = "Normal";
 		irregular[1][1] = "Low blood pressure";
 		return true;
 	}
+	//if diastolic is high, but not high enough to be considered high blood pressure and systolic is normal
 	else if (80 < dbp && dbp < 90 && 90 <= sbp && sbp <= 120) {
 		irregular[0][1] = "Pre-High blood pressure";
 		irregular[1][1] = "Normal";
 		return true;
 	}
+	//if diastolic is high and systolic is normal
 	else if (90 < dbp  && 90 <= sbp && sbp <= 120) {
 		irregular[0][1] = "High blood pressure";
 		irregular[1][1] = "Normal";
 		return true;
 	}
+	//if diastolic is low and systolic is normal
 	else if (40 < dbp && dbp < 60 && 90 <= sbp && sbp <= 120) {
 		irregular[0][1] = "Low blood pressure";
 		irregular[1][1] = "Normal";
 		return true;
 	}
+	//if both diastolic and systolic are high, but not considered high blood pressure
 	else if (80 < dbp && dbp < 90 && 120 < sbp && sbp < 140) {
 		for (int i = 0; i < 5; i++) {
 			if (i == 0) {
@@ -124,6 +131,7 @@ bool isNormalBp(int dbp, int sbp) {
 		}
 		return true;
 	}
+	//if both diastolic and systolic are high
 	else if (90 < dbp  && 140 < sbp ) {
 		for (int i = 0; i < 5; i++) {
 			if (i == 0) {
@@ -136,6 +144,7 @@ bool isNormalBp(int dbp, int sbp) {
 		}
 		return true;
 	}
+	//if both diastolic and systolic are low
 	else if ( dbp < 60 && sbp < 90) {
 		for (int i = 0; i < 5; i++) {
 			if (i == 0) {
@@ -148,6 +157,7 @@ bool isNormalBp(int dbp, int sbp) {
 		}
 		return true;
 	}
+	//this occurs when one bp is too low and the other is too high. This would mean that the person is dead
 	else {
 		cout << "Invalid readings" << endl;
 		irregular[0][1] = "Invalid Reading";
@@ -205,60 +215,71 @@ int main()
 {
 	//initialize random seed
 	srand(time(NULL));
+	int input = 0;
 	
 	//Initialize User Object
 	user user1 = user();
 
-	/* **IN PLACE FOR TESTING PURPOSES**
-	//Randomly generate User Vitals
-	getVitals(user1);
-	*/
-	
-	//Get user input for vital signals
-	getUserInput(user1);
+	//ask for user input on how to retrieve data
+	cout << "Do you want to input(1) data or generate(2) data? " << endl;
+	cin >> input;
 
-	//Analyze vital signals
-	isNormalBp(user1.getDiastolicBp(), user1.getSystolicBp());
-	isNormalHeartRate(user1.getHeartRate());
-	isNormalTemp(user1.getSkinTemperature());
-	isNormalOxygenLevel(user1.getOxygenSaturation());
-
-	//Output user vitals to console **FOR TESTING**
-	printf("Diastolic Blood Pressure: %d\n", user1.getDiastolicBp());
-	printf("Systolic Blood Pressure: %d\n", user1.getSystolicBp());
-	printf("Heart Rate: %d\n", user1.getHeartRate());
-	printf("Temperature: %.2f\n", user1.getSkinTemperature());
-	printf("Oxygen Saturation: %.2f\n", user1.getOxygenSaturation());
-	printf("\n");
-
-	//Output vitals analysis to console **FOR TESTING**
-	for (int i = 0; i < 5; i++) {
-		cout << irregular[i][0] << ": " << irregular[i][1] << endl;
+	if (input == 1) {
+		//Get user input for vital signals
+		getUserInput(user1);
 	}
-	
-	//File Output
-	FILE * outputFile;
-	int n;
-	char name[100];
-
-	outputFile = fopen("vitalsOutput.txt", "w");
-
-	if (isNormalBp(user1.getDiastolicBp(), user1.getSystolicBp())) {
-		fprintf(outputFile, "Diastolic Blood Pressure: %s \n", irregular[0][1].c_str());
-		fprintf(outputFile, "Systolic Blood Pressure: %s \n", irregular[1][1].c_str());
+	else if (input == 2) {
+		//Randomly generate User Vitals
+		getVitals(user1);
 	}
-	if (isNormalHeartRate(user1.getHeartRate())) {
-		fprintf(outputFile, "Heart Rate: %s \n", irregular[2][1].c_str());
-	}
-	if (isNormalTemp(user1.getSkinTemperature())) {
-		fprintf(outputFile, "Skin Temperature: %s \n", irregular[3][1].c_str());
-	}
-	if (isNormalOxygenLevel(user1.getOxygenSaturation())) {
-		fprintf(outputFile, "Skin Temperature: %s \n", irregular[4][1].c_str());
+	else {
+		cout << "Invalid entry. Goodbye!\n";
 	}
 
-	fclose(outputFile);
+	//will only run if user inputs correct reply
+	if (input == 1 || input == 2) {
+		//Analyze vital signals
+		isNormalBp(user1.getDiastolicBp(), user1.getSystolicBp());
+		isNormalHeartRate(user1.getHeartRate());
+		isNormalTemp(user1.getSkinTemperature());
+		isNormalOxygenLevel(user1.getOxygenSaturation());
 
+		//Output user vitals to console **FOR TESTING**
+		printf("Diastolic Blood Pressure: %d\n", user1.getDiastolicBp());
+		printf("Systolic Blood Pressure: %d\n", user1.getSystolicBp());
+		printf("Heart Rate: %d\n", user1.getHeartRate());
+		printf("Temperature: %.2f\n", user1.getSkinTemperature());
+		printf("Oxygen Saturation: %.2f\n", user1.getOxygenSaturation());
+		printf("\n");
+
+		//Output vitals analysis to console **FOR TESTING**
+		for (int i = 0; i < 5; i++) {
+			cout << irregular[i][0] << ": " << irregular[i][1] << endl;
+		}
+
+		//File Output
+		FILE * outputFile;
+		int n;
+		char name[100];
+
+		outputFile = fopen("vitalsOutput.txt", "w");
+
+		if (isNormalBp(user1.getDiastolicBp(), user1.getSystolicBp())) {
+			fprintf(outputFile, "Diastolic Blood Pressure: %s \n", irregular[0][1].c_str());
+			fprintf(outputFile, "Systolic Blood Pressure: %s \n", irregular[1][1].c_str());
+		}
+		if (isNormalHeartRate(user1.getHeartRate())) {
+			fprintf(outputFile, "Heart Rate: %s \n", irregular[2][1].c_str());
+		}
+		if (isNormalTemp(user1.getSkinTemperature())) {
+			fprintf(outputFile, "Skin Temperature: %s \n", irregular[3][1].c_str());
+		}
+		if (isNormalOxygenLevel(user1.getOxygenSaturation())) {
+			fprintf(outputFile, "Skin Temperature: %s \n", irregular[4][1].c_str());
+		}
+
+		fclose(outputFile);
+	}
 
 	system("pause");
     return 0;

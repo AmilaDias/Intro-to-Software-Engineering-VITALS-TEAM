@@ -39,7 +39,7 @@ double dataGen::generateSkinTemp()
 	return x;
 }
 
-//normal range is 95-100%, using decimal to represent percentage
+//normal range is 95-100%, using decimal to represent percentage (ex: .95)
 double dataGen::generateOxySat()
 {
 	return ((((rand() % 105) + 90) + ((rand() % 105) + 90)) / 200);
