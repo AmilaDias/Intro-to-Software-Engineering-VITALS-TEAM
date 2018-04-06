@@ -10,8 +10,7 @@
 
 using namespace std;
 int id = 1;
-string irregular[5][5] = {"Diastolic", "Systolic", "Heart Rate", "Temperature", "Oxygen Level"};
-
+string irregular[5][2];
 void getVitals(user &user1) {
 	dataGen *dataGenerator = new dataGen();
 	int dp = 0;
@@ -38,64 +37,66 @@ void getVitals(user &user1) {
 
 int isNormalBp(int dbp, int sbp) {
 	//diastolic and sytolic cases
-	if (60 <= dbp <= 80 && 90 <= sbp <= 120) {
+	if (60 <= dbp >= 80 && 90 <= sbp >= 120) {
+		irregular[0][1] = "Normal";
+		irregular[1][1] = "Normal";
 		return 1;
 	}
-	else if (60 <= dbp <= 80 && 120 < sbp < 140) {
-		irregular[1][0] = "Pre-High blood pressure";
+	else if (60 <= dbp >= 80 && 120 < sbp > 140) {
+		irregular[1][1] = "Pre-High blood pressure";
 		return 0;
 	}
-	else if (60 <= dbp <= 80 && 140 < sbp <= 160) {
-		irregular[1][0] = "High blood pressure";
+	else if (60 <= dbp >= 80 && 140 < sbp >= 160) {
+		irregular[1][1] = "High blood pressure";
 		return 0;
 	}
-	else if (60 <= dbp <= 80 && 70 < sbp < 90) {
-		irregular[1][0] = "Low blood pressure";
+	else if (60 <= dbp >= 80 && 70 < sbp > 90) {
+		irregular[1][1] = "Low blood pressure";
 		return 0;
 	}
-	else if (80 < dbp < 90 && 90 <= sbp <= 120) {
-		irregular[0][0] = "Pre-High blood pressure";
+	else if (80 < dbp > 90 && 90 <= sbp >= 120) {
+		irregular[0][1] = "Pre-High blood pressure";
 		return 0;
 	}
-	else if (90 < dbp <= 100 && 90 <= sbp <= 120) {
-		irregular[0][0] = "High blood pressure";
+	else if (90 < dbp >= 100 && 90 <= sbp >= 120) {
+		irregular[0][1] = "High blood pressure";
 		return 0;
 	}
-	else if (40 < dbp < 60 && 90 <= sbp <= 120) {
-		irregular[0][0] = "Low blood pressure";
+	else if (40 < dbp > 60 && 90 <= sbp >= 120) {
+		irregular[0][1] = "Low blood pressure";
 		return 0;
 	}
-	else if (80 < dbp < 90 && 120 < sbp < 140) {
+	else if (80 < dbp > 90 && 120 < sbp > 140) {
 		for (int i = 0; i < 5; i++) {
 			if (i == 0) {
-				irregular[i][0] = "Pre-High blood pressure";
+				irregular[i][1] = "Pre-High blood pressure";
 			}
 			if (i == 1) {
-				irregular[i][0] = "Pre-High blood pressure";
+				irregular[i][1] = "Pre-High blood pressure";
 				break;
 			}
 		}
 		return 0;
 	}
-	else if (90 < dbp <= 100 && 140 < sbp <= 160) {
+	else if (90 < dbp >= 100 && 140 < sbp >= 160) {
 		for (int i = 0; i < 5; i++) {
 			if (i == 0) {
-				irregular[i][0] = "High blood pressure";
+				irregular[i][1] = "High blood pressure";
 			}
 			if (i == 1) {
-				irregular[i][0] = "High blood pressure";
+				irregular[i][1] = "High blood pressure";
 				break;
 			}
 		}
 		return 0;
 	}
-	else if (40 < dbp < 60 && 70 < sbp < 90) {
+	else if (40 < dbp > 60 && 70 < sbp > 90) {
 		for (int i = 0; i < 5; i++) {
 			if (i == 0) {
-				irregular[i][0] = "Low blood pressure";
+				irregular[i][1] = "Low blood pressure";
 			}
 			if (i == 1) {
-				irregular[i][0] = "Low blood pressure";
+				irregular[i][1] = "Low blood pressure";
 				break;
 			}
 		}
@@ -103,49 +104,54 @@ int isNormalBp(int dbp, int sbp) {
 	}
 	else {
 		cout << "Invalid readings" << endl;
+		irregular[0][1] = "Invalid Reading";
+		irregular[1][1] = "Invalid Reading";
 	}
 
 	return 0;
 }
 
 int isNormalHeartRate(int hr) {
-	if (60 <= hr <= 100) {
+	if (60 <= hr >= 100) {
+		irregular[3][1] = "Normal";
 		return 1;
 	}
 	else if (hr > 100) {
-		irregular[3][0] = "High";
+		irregular[3][1] = "High";
 		return 0;
 	}
 	else if (hr < 60) {
-		irregular[3][0] = "Low";
+		irregular[3][1] = "Low";
 		return 0;
 	}
 }
 
 int isNormalTemp(double temp) {
-	if (98 <= temp <= 99) {
+	if (98 <= temp >= 99) {
+		irregular[4][1] = "Normal";
 		return 1;
 	}
 	else if (temp > 99) {
-		irregular[4][0] = "High";
+		irregular[4][1] = "High";
 		return 0;
 	}
 	else if (temp < 98) {
-		irregular[4][0] = "Low";
+		irregular[4][1] = "Low";
 		return 0;
 	}
 }
 
 int isNormalOxygenLevel(double oxy) {
-	if (0.95 <= oxy <= 1.00) {
+	if (0.95 <= oxy >= 1.00) {
+		irregular[5][1] = "Normal";
 		return 1;
 	}
 	else if (oxy > 1.00) {
-		irregular[5][0] = "High";
+		irregular[5][1] = "High";
 		return 0;
 	}
 	else if (oxy < .95) {
-		irregular[5][0] = "Low";
+		irregular[5][1] = "Low";
 		return 0;
 	}
 }
@@ -171,10 +177,7 @@ int main()
 	printf("\n");
 	
 	for (int i = 0; i < 5; i++) {
-		cout << irregular[i][0] << endl;
-		for (int j = 0; j < 5; j++) {
-			cout << irregular[i][j] << endl;
-		}
+		cout << irregular[i] << ": " << irregular[i][1] << endl;
 	}
 	
 	system("pause");
